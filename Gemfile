@@ -59,6 +59,8 @@ group :development do
 
   # for windows
   gem 'wdm', '>= 0.1.0', platforms: %i[mingw mswin x64_mingw jruby]
+
+  gem 'ffi', '~> 1.16', '>= 1.16.3' if RUBY_PLATFORM =~ /win32/
 end
 
 group :test do
