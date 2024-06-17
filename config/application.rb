@@ -1,6 +1,19 @@
 require_relative 'boot'
 
-require 'rails/all'
+# require 'rails'
+
+require 'active_record/railtie'
+# require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_view/railtie'
+require 'action_mailer/railtie'
+require 'active_job/railtie'
+require 'action_cable/engine'
+# require 'action_mailbox/engine'
+require 'action_text/engine'
+require 'rails/test_unit/railtie'
+require 'sprockets/railtie'
+
 require 'csv'
 
 # Require the gems listed in Gemfile, including any gems
@@ -16,6 +29,10 @@ module ApiGameOnline
 
     config.active_record.schema_format = :sql
 
+    config.api_only = true
+
+    config.active_storage.draw_routes = false
+    # config.action_mailbox.draw_routes = false
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
