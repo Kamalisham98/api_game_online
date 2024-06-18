@@ -9,6 +9,16 @@ class ProductController < ApplicationController
     )
   end
 
+  def show
+    product = ::Products::ShowManager.execute(params: show_params)
+
+    render(
+      json: product,
+      root: :product,
+      each_serializer: ::ProductSerializer
+    )
+  end
+
   private
 
   def index_params
@@ -19,6 +29,12 @@ class ProductController < ApplicationController
       :is_disable,
       :product_type,
       :game_name
+    ).to_h
+  end
+
+  def show_params
+    params.permit(
+      :id
     ).to_h
   end
 end
