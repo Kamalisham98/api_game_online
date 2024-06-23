@@ -5,10 +5,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     # 'http://127.0.0.1:4000',
     # 'http://yourwebsite.production.app'
 
-    resource '*'
-    #  headers: :any,
-    #  methods: %i[get post put patch delete options head],
-    #  credentials: true,
-    #  max_age: 86_400
+    resource '*', headers: :any,
+                  methods: %i[get post put patch delete options head]
+    # credentials: true
   end
 end
