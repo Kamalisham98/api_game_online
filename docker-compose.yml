@@ -1,0 +1,17 @@
+# sudo docker compose -f docker-compose.yml up -d api_game
+version: '3'
+services:
+  api_game:
+    image: api_rails:6.1
+    container_name: api_game
+    command:
+      "bash -c -l 'bundle install &&
+      bundle exec puma -C config/puma.rb'"
+    ports:
+      # Puma
+      - "3000:3000"
+    volumes:
+      - ./:/app
+
+    environment:
+      - RAILS_ENV=production
