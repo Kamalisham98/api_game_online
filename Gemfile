@@ -15,8 +15,10 @@ gem 'figaro', '~> 1.1'
 # Use to display response endpoint
 gem 'active_model_serializers', '<= 0.10.13'
 
+gem 'sqlite3', '~> 1.4'
+
 # Use mysql2 as the database activeRecord
-gem 'mysql2', '~> 0.5'
+# gem 'mysql2', '~> 0.5'
 
 # to allow access from different server
 gem 'rack-cors'
