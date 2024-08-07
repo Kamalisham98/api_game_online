@@ -1,12 +1,15 @@
 class OrderController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def create
-    order = ::Orders::CreateManager.execute(params: create_params)
+    orders = ::Orders::CreateManager.execute(params: create_params)
 
     render(
       json: orders,
       root: :orders,
       each_serializer: ::OrderSerializer
     )
+  rescue StandardError => e
+    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   def show
