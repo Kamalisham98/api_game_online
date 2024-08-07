@@ -1,10 +1,10 @@
 class ProductController < ApplicationController
-  def index
+    def index
     products = ::Products::IndexManager.execute(params: index_params)
 
     render(
       json: products,
-      root: :products,
+            root: :products,
       each_serializer: ::ProductSerializer
     )
   end
@@ -36,5 +36,15 @@ class ProductController < ApplicationController
     params.permit(
       :id
     ).to_h
+  end
+
+  def set_cookie
+    cookies['CSRF_TOKEN'] = {
+      value: form_authenticity_token,
+      domain: :all,
+      same_site: :strict,
+      secure: false,
+      expires: 12.hours.from_now
+    }
   end
 end

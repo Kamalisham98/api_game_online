@@ -1,5 +1,6 @@
 class OrderController < ApplicationController
   skip_before_action :verify_authenticity_token
+
   def create
     orders = ::Orders::CreateManager.execute(params: create_params)
 
@@ -22,6 +23,15 @@ class OrderController < ApplicationController
     )
   end
 
+  def checkout
+    checkout = ::Orders::CheckoutManager.execute(params: checkout_params)
+    render(
+      json: checkout
+      # root: :order,
+      # serializer: ::OrderSerializer
+    )
+  end
+
   private
 
   def create_params
@@ -39,6 +49,13 @@ class OrderController < ApplicationController
   def show_params
     params.permit(
       :id
+    ).to_h
+  end
+
+  def checkout_params
+    params.permit(
+      :id,
+      :zone
     ).to_h
   end
 end

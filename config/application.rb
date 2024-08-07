@@ -13,6 +13,7 @@ require 'action_cable/engine'
 require 'action_text/engine'
 require 'rails/test_unit/railtie'
 require 'sprockets/railtie'
+require 'net/http'
 
 require 'csv'
 
