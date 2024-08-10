@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrderController < BaseController
   skip_before_action :verify_authenticity_token
 
   def create
@@ -55,7 +55,9 @@ class OrderController < ApplicationController
   def checkout_params
     params.permit(
       :id,
-      :zone
+      :zone,
+      :product_id,
+      :payment_id
     ).to_h
   end
 end
