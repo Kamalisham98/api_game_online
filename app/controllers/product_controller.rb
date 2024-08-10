@@ -1,10 +1,10 @@
 class ProductController < ApplicationController
-    def index
+  def index
     products = ::Products::IndexManager.execute(params: index_params)
 
     render(
       json: products,
-            root: :products,
+      root: :products,
       each_serializer: ::ProductSerializer
     )
   end
