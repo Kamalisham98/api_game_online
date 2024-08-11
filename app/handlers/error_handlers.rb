@@ -11,10 +11,10 @@ class ErrorHandlers < StandardError
     message: nil
   )
 
-    @error = error
-    @status = status || :unprocessable_entity
     @title = title || 'Something went wrong'
     @message = custom_message(message) || 'Something went wrong'
+    @status = status || :unprocessable_entity
+    @error = @message
     super
   end
 
